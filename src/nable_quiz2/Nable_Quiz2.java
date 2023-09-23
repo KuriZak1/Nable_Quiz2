@@ -27,7 +27,7 @@ public class Nable_Quiz2 {
                     two();
                     break;
                 case 3:
-                    System.out.println("ok, Going Back to Main Menu");
+                    System.out.println("ok, have a nice day!!");
                     return;
                 default:
                     System.out.println("Invalid Input, Please Try Again!!");
@@ -79,24 +79,54 @@ public class Nable_Quiz2 {
         }      
         return null;
     }
-    //one
-    public static void one(){
-    Nable_Quiz2 Elements = new Nable_Quiz2();
-        
-        System.out.println("Please enter an Integer elements");
-        int elements = scan.nextInt();
-        Elements.insertionNode(elements);
-        
+    
+    public static void oneEnter(){
+        System.out.println("Enter the element you want to Enter");
+        int input = scan.nextInt();
+        Elements.insertionNode(input);
+    }
+    public static void oneSearch() {
         System.out.println("Enter the elements you want to search.");
-            int target = scan.nextInt();
+        int target = scan.nextInt();
             
-            Node resultNode = Elements.searchNode(target);
-            if(resultNode != null){
-                System.out.println("The element you searched is in the List: ");
-                System.out.println("The Element: "+ resultNode.data);
+        Node resultNode = Elements.searchNode(target);
+        if(resultNode != null){
+            System.out.println("The element "+ resultNode.data + " you searched is in the List: ");
+        }else{
+            System.out.println("The Element you search is not in the List");
+        }
+    }
+    
+    static Nable_Quiz2 Elements = new Nable_Quiz2();
+    public static void oneMenu(){
+        System.out.println("   Welcome to Question One Main Menu");
+        System.out.println("=======================================\n");
+        System.out.println("What do you want to do?\n 1. Enter Element\n 2. Search Element.");
+        int oums = scan.nextInt();
+        
+        switch(oums){
+            case 1:
+                oneEnter();
+                break;
+            case 2:
+                oneSearch();
+                break;
+        }
+    }
+        
+    public static void one(){
+        int loopO = 1;
+        do{
+            oneMenu();
+            System.out.println("Do you want to have another Transaction?\n 1. YES.\n 2. NO.");
+            int user = scan.nextInt();
+            if(user == 2){ // .equalsIgnoreCase("y or n")
+                System.out.println("Ok, Have a nice day");
+                loopO++;
             }else{
-                System.out.println("The Element you search is not in the List");
-            }
+                System.out.println("\nOk, Another Transcation");
+            }      
+        }while(loopO == 1); 
     }    
     //Question Two
 
@@ -105,7 +135,7 @@ public class Nable_Quiz2 {
             NodeTwo nextTwo;
         }
         
-    private NodeTwo headTwo, tail;
+    private static NodeTwo headTwo, tail;
     private static int size;
 
     private NodeTwo createNewNode(int index) throws Exception {
@@ -171,10 +201,10 @@ public class Nable_Quiz2 {
         NodeTwo temporary = headTwo;
     
         while(temporary != tail){
-        System.out.println(temporary.dataTwo + " , ");
+        System.out.println(temporary.dataTwo + "  ");
         temporary = temporary.nextTwo;
     }
-        System.out.println(tail.dataTwo + " , ");   
+        System.out.println(tail.dataTwo + "  ");   
     }
 
     private NodeTwo getNodeat (int position) throws Exception{
@@ -190,31 +220,55 @@ public class Nable_Quiz2 {
         }
             return headTwo;
     }
+    static Nable_Quiz2 List = new Nable_Quiz2 ();
     
+    public static void twomenu() throws Exception{
+        System.out.println("  Welcom to Question Two Main Menu");
+        System.out.println("======================================\n");
+        
+        System.out.println("What do you want to do?\n 1. Enter Element\n 2. Display Elements");
+        int oums = scan.nextInt();
+        
+        switch(oums){
+            case 1:
+                twoEnter();
+                break;
+            case 2:
+                twoDisplay();
+                break;
+        }
+    }
+    public static void twoEnter(){
+        
+        int index,position =0;
+        
+        System.out.println("NOTE: Enter the FIRST Element in beginning!!\n");
+        System.out.println("Please Enter Element");
+        index = scan.nextInt();
+        System.out.println("Enter Position.\n 1. Beginning.\n 2. End.");
+        int input = scan.nextInt();
+        if(input == 1){
+            position = 1;
+        }else if (input == 2){
+            position = size;
+        }
+    }
+    public static void twoDisplay() throws Exception{
+        List.display();
+    }
     public static void two() throws Exception{
-        Nable_Quiz2 List = new Nable_Quiz2 ();
-                 
-        while(true){
-                int index,position=0;
-                System.out.println("Enter Element");
-                index = scan.nextInt();
-                System.out.println("NOTE: You need to insert in beginning first!");
-                System.out.println("Enter Position\n[1] Insert in Beginning\n[2] Insert in End\n[3] EXIT.");
-                int input = scan.nextInt();
-                
-                switch(input){
-                    case 1:
-                        position = 1;
-                        break;
-                    case 2:
-                        position = size;
-                        break;
-                    case 3:
-                        return;
-                }
-                
-                List.insertion(index, position -1);
-            }
+        int loopT = 1;
+        do{
+            twomenu();
+            System.out.println("Do you want to have another Transaction?\n 1. YES.\n 2. NO.");
+            int user = scan.nextInt();
+            if(user == 2){ // .equalsIgnoreCase("y or n")
+                System.out.println("Ok, Have a nice day");
+                loopT++;
+            }else{
+                System.out.println("\nOk, Another Transcation");
+            }      
+        }while(loopT == 1);     
     }
 }
 
